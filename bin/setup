@@ -54,5 +54,7 @@ FileUtils.chdir APP_ROOT do
 
   puts "\n== Restarting application server =="
   # system! 'bin/rails restart'
-  system! 'bin/rails server -p 8080'
+  if ARGV.length < 1 || ARGV[0] != "skip-server"
+    system! 'bin/rails server -p 8080'
+  end
 end
